@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ShoppingCart.Contract\ShoppingCart.Contract.csproj" />
+      <ProjectReference Include="..\ShoppingCart.Global\ShoppingCart.Global.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Consts\ErrorMessages\" />
+      <Folder Include="Consts\SuccessMessages\" />
+    </ItemGroup>
+
+</Project>
