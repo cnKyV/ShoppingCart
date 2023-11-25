@@ -30,7 +30,7 @@ public:
 
 private:
     std::string _input;
-
+    char test = 't';
 
 };
 
