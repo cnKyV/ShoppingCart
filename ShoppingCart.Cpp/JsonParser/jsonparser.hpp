@@ -59,8 +59,11 @@ private:
         bool _isFinished = false;
         bool _isReadingOpen = false;
         bool _isInsideQuote = false;
+        bool _isBeforeColon = false;
         size_t _indent = 0;
         size_t _index = 0;
+        std::string currentKey;
+        std::string currentValue;
 
 
 
@@ -75,6 +78,8 @@ private:
                     break;
                 case CLOSING_BRACKET_ASCII:
                     _isReadingOpen = false;
+                    currentKey = "";
+                    currentValue = "";
                     break;
                 case QUOTE_ASCII:
                     if (!_isInsideQuote)
@@ -86,11 +91,30 @@ private:
                         _isInsideQuote = false;
                     }
                     break;
+                case COLON_ASCII:
+                    if (!_isBeforeColon)
+                    {
+                        _isBeforeColon = true;
+                    }
+                    else
+                    {
+                        _isBeforeColon = false;
+                    }
                 default:
-
-
-
+                    if (_isReadingOpen && _isInsideQuote)
+                    {
+                        if (_isBeforeColon)
+                        {
+                            currentKey += word;
+                        }
+                        else
+                        {
+                            currentValue += word;
+                        }
+                    }
             }
+
+
 
 
             ++_index;
